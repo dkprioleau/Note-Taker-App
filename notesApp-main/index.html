@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+    <title>Note Taker App</title>
+</head>
+<body>
+    <div class="front-page">
+        <h2 class="header">Note Taker App</h2>
+            <textarea id="note" name="note-text" class="note-area"></textarea>
+            <br>
+            <button id="submit" onclick="saveNote()" class="submit">Save Note</button> <!--onlick is an events attribute telling the code to do something when button is clicked. In this case it is calling the function saveNote()-->
+        <div class="notes-link">
+            <a href="index2.html" >View Notes</a>
+        </div> 
+    </div>
+</body>
+
+<script>
+var textElement = document.getElementById("note"); /*selected the element with id of note from the html and assigned to the vairable textElement*/
+
+function saveNote() {
+    if (textElement.value === ""){ 
+        return alert('text is empty'); /*alert method displays alert box of specified message and OK button if textElement value is empty*/
+    }
+    const id = getNoteId();/*assigned getNoteId function to variable id. Everytime function is called youre able to read notes from localStorage*/
+    let noteObject = getExistingNotes(); /*assigned getExistingNotes function to variable noteObject* which allows you to read notes from localStorage when called*/
+
+    if(!noteObject){ //remeber the ! will do the opposite boolean
+       
+            noteObject = { }; //??
+    }
+    
+    
+    noteObject[id] = textElement.value //remember noteObject is assigned to getExisting function. 
+    localStorage.setItem('notes',JSON.stringify(noteObject)); /*We are saving 'notes' which is the data we have selected (reading). JSON.stringify converts an object to a string*/
+    alert('Note Saved!'); //alert that says Note Saved!
+}
+</script>

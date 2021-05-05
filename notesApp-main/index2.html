@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script> <!--refers to JS file-->
+</head>
+
+<div class="second-page">
+    <ol id="notes-list">
+
+    </ol>
+</div>
+
+<a href="index.html"><h3>Back</h3></a>
+
+<!-- This code allows you to view the notes that have been created -->
+
+<script>
+    (function getNotes(){ /*when this function is called both the helper functions (the embedded functions will perfom)*/
+        let notes = getExistingNotes(); /*assigning the function getExistingNotes to variable notes. Now this function has been assigned to two different variables.*/ 
+        let notesArray = Object.values(notes); /*Object.values() returns the values from the notes array aka each note that was saved.*/ 
+        let orderedList = document.getElementById('notes-list') /*selects notes-list from html and assigns it to the variable orderedList*/
+        
+        notesArray.forEach(note =>{
+            let listItem = document.createElement('li')
+            listItem.innerHTML = note;
+            orderedList.appendChild(listItem)
+        }) /*created notesArray variable into a function and for each note (item in the array)  we will make it a list item element. I think we then turn the li into a note in the html??? we lastly add the listItem variable (li element) as a child of the orderedList variable which is assigned to the notes-list id*/
+    })()
+
+    /* Notice how our main function getNotes() is in parentheses. That's because in JavaScript functions wrapped inside () like above are called immediately invoked funciton expressions or self executing functions meaning that the function does not need to be called to run it does it immediately. The () all the way at the bottom of the function is signifiying the function being called.*/
+
+</script>
