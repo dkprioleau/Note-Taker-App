@@ -1,2 +1,2 @@
 # Note-Taker-App
- Practice connecting to DOM,reading, and saving user data
+ Practice connecting to DOM,retrieving, and saving user data
